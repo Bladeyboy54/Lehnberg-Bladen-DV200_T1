@@ -11,7 +11,7 @@ function BasicNav(){
                 <Nav className="me-auto">
                     <Nav.Link href="/">Landing</Nav.Link>
                     <Nav.Link href="/compare">Compare</Nav.Link>
-                    <Nav.link href="/time">Timeline</Nav.link>
+                    <Nav.Link href="/time">Timeline</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
