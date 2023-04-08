@@ -7,11 +7,11 @@ import axios from 'axios';
 function LineChart({chartData}) {
   const [labels, setLabels] = useState([])
   const [lineData, setLineData] = useState([])
-
+  const apiKey = "?key=18a129ee851a4354b439424c7f90a3f5"
 
   useEffect (() => {
     console.log("Test");
-    axios.get('https://api.rawg.io/api/developers?key=18a129ee851a4354b439424c7f90a3f5')
+    axios.get('https://api.rawg.io/api/developers'+apiKey)
     .then(res => { 
       let results = res.data.results[0].games
       // let names = res.data.results[0].games.map(name)
@@ -20,7 +20,7 @@ function LineChart({chartData}) {
 
       for (let i = 0; i < res.data.results[0].games.length; i++) {
         names.push(res.data.results[0].games[i].name)
-        axios.get('https://api.rawg.io/api/games/'+res.data.results[0].games[i].id+'?key=18a129ee851a4354b439424c7f90a3f5')
+        axios.get('https://api.rawg.io/api/games/'+res.data.results[0].games[i].id+apiKey)
         .then(res1 => { 
           console.log(res1.data.released);
           releaseDate.push(res1.data.released)
