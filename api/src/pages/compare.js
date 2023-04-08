@@ -3,16 +3,18 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import PieChart from "../components/PieChart";
 import BarChart from "../components/BarChart";
+import PolarAreaChart from "../components/PolarAreaChart";
 
 function Compare(){
     const apiKey = "?key=18a129ee851a4354b439424c7f90a3f5"
-    const [slug, setSlug] = useState("satisfactory");
+    const [slug, setSlug] = useState("red-dead-redemption-2");
     const [ratings, setRating] = useState([])
     const [img1, setImg1] = useState("")
     const [store1Count, setStore1Count] = useState(0);
     const [store2Count, setStore2Count] = useState(0);
     const [store1Name, setStore1Name] = useState('');
     const [store2Name, setStore2Name] = useState('');
+    const [addedStatus, setAddedStatus] = useState([])
 
     useEffect(() => {
       axios.get("https://api.rawg.io/api/games/" + slug + apiKey)
@@ -72,8 +74,35 @@ function Compare(){
       axios.get("https://api.rawg.io/api/games/" + slug + apiKey)
       .then((res) => {
         console.log(res.data.added_by_status)
+        setAddedStatus(res.data.added_by_status)
       })
     }, [slug])
+
+    const addStatus = {
+      labels: ['Yet', 'Owned', 'Beaten', 'To Play', 'Dropped', 'Playing'],
+      datasets: [
+        {
+          label: 'Status',
+          data: [
+            addedStatus.yet,
+            addedStatus.owned,
+            addedStatus.beaten,
+            addedStatus.toplay,
+            addedStatus.dropped,
+            addedStatus.playing,
+          ],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+            'rgba(255, 159, 64, 0.6)',
+          ],
+          borderWidth: 1,
+        },
+      ],
+    }
 
     return(
         <div>
@@ -81,27 +110,16 @@ function Compare(){
           <input type="text" value={slug} onChange={(e) => setSlug(e.target.value)}/>
           <br></br>
           <img
-            src={img1} 
-            style={{
-              width: "40%"
-            }} 
-          />
+            src={img1} style={{width: "40%"}} />
           <div>
-            <div 
-              style={{
-                width: '30%',
-                height: '30%'
-              }}
-            >
+            <div style={{width: '30%', height: '30%'}}>
               <PieChart chartData={rating} />
             </div>
-            <div
-              style={{
-                width: '30%',
-                height: '30%'
-              }}
-            >
-            <BarChart chartData={gamesCount} />
+            <div style={{width: '30%', height: '30%'}}>
+              <BarChart chartData={gamesCount} />
+            </div>
+            <div style={{width: '30%', height: '30%'}}>
+              <PolarAreaChart chartData={addStatus} />
             </div>
           </div>
           
