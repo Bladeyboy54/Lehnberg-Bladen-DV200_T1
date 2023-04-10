@@ -7,7 +7,7 @@ function BasicNav(){
     return(
         <Navbar bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="/">CheapShark</Navbar.Brand>
+                <Navbar.Brand href="/">RAWG API</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link href="/">Landing</Nav.Link>
                     <Nav.Link href="/compare">Compare</Nav.Link>
