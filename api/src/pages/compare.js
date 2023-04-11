@@ -1,9 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Card } from "react-bootstrap";
+import { CardGroup } from "react-bootstrap";
+import { Form } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 import PieChart from "../components/PieChart";
 import BarChart from "../components/BarChart";
 import PolarAreaChart from "../components/PolarAreaChart";
+import CardHeader from "react-bootstrap/esm/CardHeader";
 
 function Compare(){
     const apiKey = "?key=18a129ee851a4354b439424c7f90a3f5"
@@ -33,11 +38,13 @@ function Compare(){
         //     type: 'date'
         //   }]
         // }
+        color: "#FFFFFF",
       },
       datasets: [{
         label: 'Percent',
         data: ratings.map((data) => data.percent),
         tension: 0.6,
+        
         backgroundColor: [
           'rgba(255, 99, 132, 1)',
           'rgba(75, 192, 192, 1)',
@@ -65,7 +72,7 @@ function Compare(){
     const gamesCount = {
       labels: [store1Name, store2Name],
       datasets: [{
-        label: 'Games Sold',
+        label: 'Games Avaliable',
         data: [store1Count, store2Count]
       }]
     }
@@ -105,24 +112,48 @@ function Compare(){
     }
 
     return(
-        <div>
-          <p>Compare</p>
-          <input type="text" value={slug} onChange={(e) => setSlug(e.target.value)}/>
-          <br></br>
-          <img
-            src={img1} style={{width: "40%"}} />
-          <div>
-            <div style={{width: '30%', height: '30%'}}>
-              <PieChart chartData={rating} />
-            </div>
-            <div style={{width: '30%', height: '30%'}}>
-              <BarChart chartData={gamesCount} />
-            </div>
-            <div style={{width: '30%', height: '30%'}}>
-              <PolarAreaChart chartData={addStatus} />
-            </div>
+        <div className="mt-5">
+          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <Form className="d-flex" style={{width: "20%", borderRadius: "30px"}}>
+              <Form.Control
+                type="text"
+                className="me-2"
+                aria-label="Search"
+                value={slug}
+                onChange={(e) => setSlug(e.target.value)} 
+              />
+              <Button variant="outline-success" >Search</Button>
+            </Form>
           </div>
           
+          <br></br>
+          <img src={img1} style={{width: "40%", borderRadius: "30px"}} />
+            <CardGroup className="m-5"  >
+              <Card bg="dark" text="light">
+                <CardHeader>
+                  <PieChart chartData={rating} />
+                </CardHeader>
+                <Card.Body>
+                  <Card.Title>User Ratings of the Game</Card.Title>
+                </Card.Body>
+              </Card>
+              <Card bg="dark" text="light">
+                <CardHeader>
+                  <BarChart chartData={gamesCount} />
+                </CardHeader>
+                <Card.Body>
+                  <Card.Title>Games avaliable on the Store</Card.Title>
+                </Card.Body>
+              </Card>
+              <Card bg="dark" text="light">
+                <CardHeader>
+                <PolarAreaChart chartData={addStatus} />
+                </CardHeader>
+                <Card.Body>
+                  <Card.Title>Player Game Status</Card.Title>
+                </Card.Body>
+              </Card>
+            </CardGroup>
         </div>
     )
 }

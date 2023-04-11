@@ -17,7 +17,7 @@ function Landing (){
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <small className="text-muted"><a href="https://rawg.io/apidocs">Documentation</a> </small>
+                        <Button variant="primary" href="https://rawg.io/apidocs">RAWG API</Button>
                     </Card.Footer>
                 </Card>
                 <Card bg={"dark"} text={"light"}>
@@ -30,7 +30,7 @@ function Landing (){
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <Button variant="primary">React</Button>{'https://react.dev/'}
+                        <Button variant="primary" href="https://react.dev/">React</Button>{''}
                     </Card.Footer>
                 </Card>
                 <Card bg={"dark"} text={"light"}>
@@ -43,7 +43,7 @@ function Landing (){
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <small className="text-muted"><a href="https://react-bootstrap.github.io/">React Bootstrap</a></small>
+                        <Button variant="primary" href="https://react-bootstrap.github.io/">React Bootstrap</Button>
                     </Card.Footer>
                 </Card>
             </CardGroup>

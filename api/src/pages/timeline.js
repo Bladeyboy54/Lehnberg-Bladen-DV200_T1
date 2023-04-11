@@ -16,7 +16,8 @@ function Timeline(){
             let results = res.data.results[0].games
             let names = []
             let releaseDate = []
-
+            let releaseTimestamp = []
+            
             for (let i = 0; i < res.data.results[0].games.length; i++) {
                 names.push(res.data.results[0].games[i].name)
                 axios.get('https://api.rawg.io/api/games/'+res.data.results[0].games[i].id+apiKey)
@@ -53,10 +54,9 @@ function Timeline(){
     }
 
     return(
-        <> 
-        <p>Timeline</p>
-        <LineChart chartData={developers} />
-        </>
+        <div style={{width: "70%", display: 'flex', justifyContent: 'center' }}> 
+            <LineChart chartData={developers} />
+        </div>
        
     )
 }
