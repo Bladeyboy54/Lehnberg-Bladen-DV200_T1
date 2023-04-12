@@ -91,12 +91,12 @@ function Compare(){
         {
           label: 'Status',
           data: [
-            addedStatus.yet,
-            addedStatus.owned,
-            addedStatus.beaten,
-            addedStatus.toplay,
-            addedStatus.dropped,
-            addedStatus.playing,
+            addedStatus?.yet,
+            addedStatus?.owned,
+            addedStatus?.beaten,
+            addedStatus?.toplay,
+            addedStatus?.dropped,
+            addedStatus?.playing,
           ],
           backgroundColor: [
             'rgba(255, 99, 132, 0.6)',

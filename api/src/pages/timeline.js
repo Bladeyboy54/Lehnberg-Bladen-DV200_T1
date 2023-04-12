@@ -3,6 +3,8 @@ import LineChart from "../components/LineChart";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { Card } from "react-bootstrap";
+import CardHeader from "react-bootstrap/esm/CardHeader";
 
 function Timeline(){
 
@@ -18,22 +20,31 @@ function Timeline(){
             let names = []
             let releaseDate = []
             let releaseTimestamps = []
-            
+            console.log(res.data.results[0].games.length);
             for (let i = 0; i < res.data.results[0].games.length; i++) {
-                names.push(res.data.results[0].games[i].name)
                 axios.get('https://api.rawg.io/api/games/'+res.data.results[0].games[i].id+apiKey)
                 .then(res1 => {
                     const releaseDate = res1.data.released
-                    console.log(releaseDate)
-                    releaseTimestamps.push(moment.utc(releaseDate).format('YYYY-MM-DD'));
+                    // console.log(moment(releaseTimestamps).valueOf())
+                    // releaseTimestamps.push(moment.utc(releaseDate).format('YYYY-MM-DD'));
+                    names.push(res.data.results[0].games[i].name)
+
+                    releaseTimestamps.push(parseInt(moment.utc(releaseDate).format('YYYY')));
+                    // console.log(moment.utc(releaseDate).format('YYYY-MM-DD'));
+                    
                     if (releaseTimestamps.length === res.data.results[0].games.length) {
-                        setLabels(names)
-                        console.log(releaseTimestamps)
-                        setLineData(releaseTimestamps)
+                        // console.log(releaseTimestamps)
+                        setLabels(names);
+                        setLineData(releaseTimestamps);
+                        console.log(releaseTimestamps);
+                        
                     }
-                    // console.log(res1.data.released);
-                    // releaseDate.push(res1.data.released)
+                    // // console.log(res1.data.released);
+                    // // releaseDate.push(res1.data.released)
+                    // console.log(lineData);
                 })
+               
+
             }
             // console.log(names)
             // setLabels(names)
@@ -49,6 +60,7 @@ function Timeline(){
     const developers = {
         Labels: labels,
         options: {
+            locale: 'en-ZA',
             scales: {
                 xAxes: [{
                     scaleLabel: {
@@ -63,14 +75,15 @@ function Timeline(){
                         displayFormats: {
                             year: 'YYYY',
                         },
+                    
 
                     },
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Release Date'
-                    },
+                    // scaleLabel: {
+                    //     display: true,
+                    //     labelString: 'Release Date'
+                    // },
                     // ticks: {
-                    //     callback: function(value) {
+                    //     callback: function(value) {  
                     //         return moment(value).format('MMM YYYY');
                     //     }
                     // }
@@ -84,15 +97,25 @@ function Timeline(){
             }
         },
         datasets: [{
-            label: 'Labels',
-            data: lineData.map((timestamp, i) => ({x: labels[i], y: moment(timestamp).valueOf() })),
+            label: 'Ubisoft',
+            // data: lineData.map((timestamp, i) => ({x: labels[i], y: moment(timestamp).valueOf() })),
+            data: lineData.map((timestamp, i) => ({x: labels[i], y: timestamp })),
+
             tension: 0.6
         }]
     }
 
     return(
-        <div style={{width: "70%", display: 'flex', justifyContent: 'center' }}> 
-            <LineChart chartData={developers} />
+        <div className="mt-5" style={{width: "70%", marginLeft: "auto", marginRight: "auto"}}> 
+            <Card>
+                <CardHeader>
+                   <LineChart chartData={developers} /> 
+                </CardHeader>
+                <Card.Body>
+                    <Card.Title>Games Relaesed By Ubisoft between 2012 & 2018</Card.Title>
+                </Card.Body>
+            </Card>
+            
         </div>
        
     )

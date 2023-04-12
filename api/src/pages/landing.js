@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 function Landing (){
     return(
-        <div style={{display: 'flex', justifyContent: 'center'}} className="mt-5">
+        <div style={{display: 'flex', justifyContent: 'center'}} className="mt-5 mb-5">
             <CardGroup style={{width:"80%"}}  >
                 <Card bg={"dark"} text={"light"} >
                     <Card.Img variant="top" src="https://pipedream.com/s.v0/app_1gKhAk/logo/orig" />
