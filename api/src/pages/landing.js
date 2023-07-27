@@ -36,7 +36,7 @@ function Landing (){
                 <Card bg={"dark"} text={"light"}>
                     <Card.Img variant="top" src="https://pbs.twimg.com/media/CIRgqwWVAAAZ5Vf.png" />
                     <Card.Body>
-                        <Card.Title>Card title</Card.Title>
+                        <Card.Title>React Bootstrap</Card.Title>
                         <Card.Text>
                         React-Bootstrap replaces the Bootstrap JavaScript. Each component has been built from scratch as a true React component, without unneeded dependencies like jQuery.
                         As one of the oldest React libraries, React-Bootstrap has evolved and grown alongside React, making it an excellent choice as your UI foundation.
