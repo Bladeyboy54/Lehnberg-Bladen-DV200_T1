@@ -3,7 +3,7 @@
 <h5 align="center" style="padding:0;margin:0;">221146</h5>
 <h6 align="center">DV200 - Term 1 | 2023</h6>
 <div align="center">
-  <a href="https://github.com/CSWilder02/Term-4-Group-2---Project">
+  <a href="https://github.com/Bladeyboy54/Lehnberg-Bladen-DV200_T1">
     <img src="https://pbs.twimg.com/profile_images/763061332702736385/KoK6gHzp_400x400.jpg" alt="ReactJs" width="200" height="auto">
   </a>
 
