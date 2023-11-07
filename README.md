@@ -118,6 +118,17 @@ The timeline displays all the games released by Ubisoft between 2012 and 2018.
 
 ### Mockups
 
+<a href="https://github.com/Bladeyboy54/Lehnberg-Bladen-DV200_T1">
+    <img src="api\src\Img\Floating MacBook Pro Mockup.png" alt="Logo" width="500" height="400">
+  </a>
+<br>
+<a href="https://github.com/Bladeyboy54/Lehnberg-Bladen-DV200_T1">
+    <img src="api\src\Img\iMac Pro Right Side View Mockup.png" alt="Logo" width="500" height="400">
+  </a>
+<br>
+<a href="https://github.com/Bladeyboy54/Lehnberg-Bladen-DV200_T1">
+    <img src="api\src\Img\iPad Pro 12.9-inch Space Gray Mockup.png" alt="Logo" width="500" height="400">
+  </a>
 
 ### Video Demonstration
 
