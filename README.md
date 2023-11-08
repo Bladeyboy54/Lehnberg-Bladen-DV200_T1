@@ -39,10 +39,8 @@
 * [Final Outcome](#final-outcome)
     * [Mockups](#mockups)
     * [Video Demonstration](#video-demonstration)
-* [Conclusion](#conclusion)
 * [License](#license)
 * [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
 
 ## About The Project
 
